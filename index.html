@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b2a">
+  <title>Corps Member Companion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="brand-mark">NYSC</div>
+    <div>
+      <p class="eyebrow">CAMPING • POSTING • SERVICE YEAR • POP</p>
+      <h1>Corps Member Companion</h1>
+      <p class="subtitle">A practical guide and personal organizer for your service year.</p>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Main navigation">
+    <button class="tab active" data-view="dashboard">Dashboard</button>
+    <button class="tab" data-view="guide">Problem Solver</button>
+    <button class="tab" data-view="planner">My Planner</button>
+    <button class="tab" data-view="contacts">Help & Safety</button>
+    <button class="tab" data-view="records">My Records</button>
+  </nav>
+
+  <main>
+    <section id="dashboard" class="view active">
+      <div class="welcome">
+        <div>
+          <p class="eyebrow">YOUR SERVICE YEAR, ORGANIZED</p>
+          <h2>Stay prepared at every stage.</h2>
+          <p>Find practical next steps, track important tasks, and keep your personal service records in one place.</p>
+        </div>
+        <div class="progress-ring"><strong id="taskPercent">0%</strong><span>tasks done</span></div>
+      </div>
+      <div class="stats">
+        <article class="stat"><span>Open tasks</span><strong id="openCount">0</strong></article>
+        <article class="stat"><span>Completed</span><strong id="doneCount">0</strong></article>
+        <article class="stat"><span>Saved records</span><strong id="recordCount">0</strong></article>
+      </div>
+      <h3>Service journey</h3>
+      <div class="journey-grid">
+        <button class="journey-card" data-stage="camp"><span>01</span><strong>Orientation camp</strong><small>Preparation, health, accommodation, safety</small></button>
+        <button class="journey-card" data-stage="posting"><span>02</span><strong>Posting & relocation</strong><small>PPA, rejection, redeployment, travel</small></button>
+        <button class="journey-card" data-stage="service"><span>03</span><strong>Daily service</strong><small>Allowance, work, CDS, attendance, welfare</small></button>
+        <button class="journey-card" data-stage="completion"><span>04</span><strong>Clearance & POP</strong><small>Monthly clearance, final documents, next steps</small></button>
+      </div>
+      <div class="panel">
+        <div class="section-heading"><div><h3>Upcoming tasks</h3><p>Tasks you have not completed yet.</p></div><button class="text-button" data-go="planner">Open planner →</button></div>
+        <div id="dashboardTasks" class="task-list"></div>
+      </div>
+      <p class="notice"><strong>Important:</strong> This is an independent planning tool, not an official NYSC system. Rules, dates, allowances, forms and procedures can change. Confirm requirements with your NYSC state secretariat, LGI, camp officials or official NYSC channels.</p>
+    </section>
+
+    <section id="guide" class="view">
+      <div class="page-heading"><p class="eyebrow">PRACTICAL SUPPORT</p><h2>Problem Solver</h2><p>Choose a stage or search for a challenge. Each topic includes suggested steps and who may be able to help.</p></div>
+      <div class="search-row"><input id="guideSearch" type="search" placeholder="Search: allowance, PPA, illness, CDS, clearance…" aria-label="Search problems"><select id="stageFilter" aria-label="Filter by stage"><option value="all">All stages</option><option value="camp">Orientation camp</option><option value="posting">Posting & relocation</option><option value="service">Service year</option><option value="completion">Completion & POP</option></select></div>
+      <div id="guideList" class="guide-list"></div>
+    </section>
+
+    <section id="planner" class="view">
+      <div class="page-heading"><p class="eyebrow">YOUR PERSONAL CHECKLIST</p><h2>My Planner</h2><p>Add reminders and mark tasks complete. Your data is saved in this browser on this device.</p></div>
+      <form id="taskForm" class="panel form-grid">
+        <label>Task name<input id="taskTitle" required maxlength="120" placeholder="e.g. Confirm monthly clearance date"></label>
+        <label>Due date<input id="taskDue" type="date"></label>
+        <label class="wide">Notes (optional)<textarea id="taskNotes" rows="2" maxlength="500" placeholder="What do you need to do or bring?"></textarea></label>
+        <button class="primary" type="submit">＋ Add task</button>
+      </form>
+      <div class="filter-row"><button class="filter active" data-task-filter="all">All</button><button class="filter" data-task-filter="open">Open</button><button class="filter" data-task-filter="done">Completed</button></div>
+      <div id="plannerTasks" class="task-list"></div>
+      <div class="panel"><h3>Useful routine checklist</h3><p class="muted">These are general reminders. Adapt them to your state and PPA requirements.</p><div id="routineChecklist" class="checklist"></div></div>
+    </section>
+
+    <section id="contacts" class="view">
+      <div class="page-heading"><p class="eyebrow">GET HELP SAFELY</p><h2>Help & Safety</h2><p>Know which channel to try and what information to prepare before reporting a problem.</p></div>
+      <div class="safety-grid">
+        <article class="panel"><div class="icon">🆘</div><h3>Immediate danger</h3><p>Move to a safer public place if possible. Contact local emergency services, trusted people nearby, and relevant security authorities. Do not confront a threatening person alone.</p><p><strong>Prepare:</strong> location, what happened, time, injuries, and a safe callback method.</p></article>
+        <article class="panel"><div class="icon">🏢</div><h3>NYSC administrative issue</h3><p>Start with the appropriate camp official, platoon officer, LGI, ZI or state secretariat, depending on the stage and issue. Ask for the correct procedure and required documents.</p><p><strong>Keep:</strong> call-up details, state code, dated copies, receipts and written responses. Share sensitive identifiers only through trusted official channels.</p></article>
+        <article class="panel"><div class="icon">🏥</div><h3>Illness or mental distress</h3><p>Seek qualified medical care for urgent symptoms. Tell an appropriate camp official, supervisor or trusted person if illness affects participation. Do not rely on this app for diagnosis or treatment.</p><p>If you may harm yourself or someone else, seek immediate in-person help from emergency services or a trusted person.</p></article>
+        <article class="panel"><div class="icon">💳</div><h3>Allowance or financial trouble</h3><p>Check official announcements and your payment details; ask the designated NYSC office what to verify. Keep dates and evidence, but never share PINs, passwords or one-time codes.</p><p>Avoid loan scams, “processing fee” requests and anyone promising guaranteed payment or posting changes.</p></article>
+      </div>
+      <div class="panel"><h3>Report an issue: preparation notes</h3><p class="muted">Use this template when contacting an official. Do not include passwords or banking PINs.</p><textarea id="reportDraft" rows="7" placeholder="Date and location:
+Issue:
+Steps already taken:
+Relevant document/reference:
+What help or clarification is requested:
+Safe contact method:"></textarea><button class="primary" id="copyReport">Copy report notes</button></div>
+      <div class="notice"><strong>Scam warning:</strong> Do not pay unofficial agents for redeployment, clearance, certificate collection or guaranteed posting. Verify any payment request with the relevant official office.</div>
+    </section>
+
+    <section id="records" class="view">
+      <div class="page-heading"><p class="eyebrow">KEEP YOUR PAPERWORK TIDY</p><h2>My Records</h2><p>Store non-sensitive notes about documents, submissions and follow-ups. Avoid entering bank details, passwords or full identity numbers.</p></div>
+      <form id="recordForm" class="panel form-grid">
+        <label>Record title<input id="recordTitle" required maxlength="120" placeholder="e.g. PPA acceptance letter"></label>
+        <label>Category<select id="recordCategory"><option>Posting / PPA</option><option>Camp</option><option>Clearance</option><option>CDS</option><option>Allowance</option><option>Medical / welfare</option><option>Other</option></select></label>
+        <label>Date<input id="recordDate" type="date"></label>
+        <label>Status<select id="recordStatus"><option>To do</option><option>Submitted</option><option>Awaiting response</option><option>Completed</option></select></label>
+        <label class="wide">Notes / follow-up<textarea id="recordNotes" rows="3" maxlength="1000" placeholder="Where it was submitted, next step, who to follow up with…"></textarea></label>
+        <button class="primary" type="submit">＋ Save record</button>
+      </form>
+      <div class="toolbar"><input id="recordSearch" type="search" placeholder="Search your records"><button id="exportData" class="secondary">Export backup (JSON)</button><label class="import-label secondary">Import backup<input id="importData" type="file" accept=".json,application/json" hidden></label></div>
+      <div id="recordsList" class="record-list"></div>
+      <p class="notice">Privacy: information is stored locally in your browser, not sent to a server. Anyone who can unlock this device or access this browser profile may be able to view it. Export backups carefully and protect the files.</p>
+    </section>
+  </main>
+
+  <footer><span>Corps Member Companion</span><span>Independent tool • Not an official NYSC product</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
